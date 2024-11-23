@@ -18,19 +18,16 @@ with open("max_text_len.txt", 'r') as f:
     max_len = int(f.read())
 
 
+stop_words = set(stopwords.words('english'))
+punctuation_obj = str.maketrans('', '', punctuation)
+
+
 def preprocess_text(text):
-    stop_words = set(stopwords.words('english'))
-    punctuation_obj = str.maketrans('', '', punctuation)
-    all_text_list = []
-    word_list = (
-        word.translate(punctuation_obj)  # Remove punctuation
-        for line in text
-        for word in word_tokenize(line)  # Tokenize line-by-line
-    )
-    # Filter stopwords and join cleaned text
+    word_list = word_tokenize(text)
+    word_list = [word.translate(punctuation_obj) for word in word_list]
     filtered_words = [word for word in word_list if word.lower() not in stop_words]
-    all_text_list.append(' '.join(filtered_words))
-    return all_text_list
+    preprocessed_text = ' '.join(filtered_words)
+    return preprocessed_text
 
 
 def predict_class(news):
