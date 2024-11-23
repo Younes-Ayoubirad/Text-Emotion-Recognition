@@ -1,0 +1,9 @@
+nltk==3.8.1
+numpy==1.23.5
+streamlit==1.30.0
+streamlit==1.37.1
+tensorflow==2.10.1
+tensorflow==2.10.0
+tensorflow==2.6.0
+tensorflow==2.18.0
+tensorflow_intel==2.18.0
